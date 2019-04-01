@@ -54,11 +54,11 @@ public class Artikal {
                 cijena.equals(artikal.cijena);
     }
 
-    public static ArrayList<String> izbaciDuplikate(ArrayList<String> artikal) {
+    public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikal) {
         for(int i = 0; i<artikal.size(); i++) {
             for(int j = i+1; j<artikal.size(); j++) {
                 if(artikal.get(i).equals(artikal.get(j))) {
-                    artikal.remove(artikal.get(i));
+                    artikal.remove(artikal.get(j));
                 }
             }
         }
