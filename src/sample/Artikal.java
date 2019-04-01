@@ -39,14 +39,11 @@ public class Artikal {
 
     @Override
     public String toString() {
-        return "Artikal{" +
-                "sifra='" + sifra + '\'' +
-                ", naziv='" + naziv + '\'' +
-                ", cijena=" + cijena +
-                '}';
+        return sifra+","+naziv+","+cijena;
     }
 
-    Object o = new Object();
+    //Object o = new Object();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,15 +53,15 @@ public class Artikal {
                 naziv.equals(artikal.naziv) &&
                 cijena.equals(artikal.cijena);
     }
-    Artikal artikal = (Artikal) o;
 
-    public static izbaciDuplikate(ArrayList<String> artikal) {
+    public static ArrayList<String> izbaciDuplikate(ArrayList<String> artikal) {
         for(int i = 0; i<artikal.size(); i++) {
-            for(int j = 0; j<artikal.size(); j++) {
+            for(int j = i+1; j<artikal.size(); j++) {
                 if(artikal.get(i).equals(artikal.get(j))) {
-                    artikal.remove(i);
+                    artikal.remove(artikal.get(i));
                 }
             }
         }
+        return artikal;
     }
 }
