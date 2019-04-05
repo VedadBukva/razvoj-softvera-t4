@@ -7,6 +7,10 @@ public class Artikal {
     private String naziv;
     private Double cijena;
 
+    public Artikal() {
+
+    }
+
     public String getSifra() {
         return sifra;
     }
@@ -31,10 +35,11 @@ public class Artikal {
         this.cijena = cijena;
     }
 
-    public Artikal(String sifra, String naziv, Double cijena) {
-        this.sifra = sifra;
-        this.naziv = naziv;
-        this.cijena = cijena;
+    public Artikal(String podatak) {
+        String[] artikal = podatak.split(",");
+        sifra = artikal[0];
+        naziv = artikal[1];
+        cijena = Double.parseDouble(artikal[2]);
     }
 
     @Override
@@ -46,15 +51,15 @@ public class Artikal {
 
     @Override
     public boolean equals(Object o) {
+        Artikal a = (Artikal) o;
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Artikal artikal = (Artikal) o;
-        return sifra.equals(artikal.sifra) &&
-                naziv.equals(artikal.naziv) &&
-                cijena.equals(artikal.cijena);
-    }
+        if (!naziv.equals(a.getNaziv())) return false;
+        if (!sifra.equals(a.getSifra())) return false;
 
-    public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikal) {
+        if (Double.compare(cijena, a.getCijena()) != 0) return false;
+        return true;
+    }
+    /*public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikal) {
         for(int i = 0; i<artikal.size(); i++) {
             for(int j = i+1; j<artikal.size(); j++) {
                 if(artikal.get(i).equals(artikal.get(j))) {
@@ -63,5 +68,5 @@ public class Artikal {
             }
         }
         return artikal;
-    }
+    }*/
 }
