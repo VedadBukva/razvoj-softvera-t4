@@ -1,8 +1,8 @@
 package sample;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
@@ -15,10 +15,13 @@ public class Controller {
     public TextArea area1;
     public TextArea area2;
     public Button tipka;
-    public ChoiceBox izborArtikla;
+    public ChoiceBox<Artikal> izborArtikla;
     public Spinner spiner;
     public Button tipka2;
     public TextArea finalArea;
+    private Racun racun;
+    private ArrayList<Artikal> rez;
+    private ObservableList<Artikal> lista = FXCollections.observableArrayList();
 
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikal) {
         for(int i = 0; i<artikal.size(); i++) {
@@ -46,16 +49,28 @@ public class Controller {
             rezultat += element + "\n";
         }
         area2.setText(rezultat);
-        //String[] izbor = rezultat.split("\n");
-        String izlaz = "";
+        racun = new Racun();
+        rez = new ArrayList<>(kanta);
+        lista.addAll(rez);
+        izborArtikla.setItems(lista);
+
+
+
+       /* String izlaz = "";
         for(Artikal a : filter) {
             izlaz += a.getSifra() + ", " + a.getNaziv() + ", " + a.getCijena();
             izborArtikla.getItems().add(a.getSifra());
-        }
+        }*/
+
 
     }
 
-    public void akcija2(ActionEvent actionEvent) {
+    public void dodajNaRacun(ActionEvent actionEvent) {
+        racun.dodajStavku(izborArtikla.getSelectionModel().getSelectedItem(),(Integer)spiner.getValue());
+        finalArea.setText(racun.toString());
+    }
+
+    /*public void akcija2(ActionEvent actionEvent) {
         int vrijednost = (int) spiner.getValue();
         Artikal trenutniArt = new Artikal();
 
@@ -66,7 +81,7 @@ public class Controller {
         }
         double cijena = trenutniArt.getCijena();
         finalArea.setText(izborArtikla.getValue()+ " " + vrijednost + " " + vrijednost*cijena);
-    }
+    }*/
 
 }
 

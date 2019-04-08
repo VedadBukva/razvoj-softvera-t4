@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Artikal {
     private String sifra;
@@ -49,16 +50,18 @@ public class Artikal {
 
     //Object o = new Object();
 
+
     @Override
     public boolean equals(Object o) {
-        Artikal a = (Artikal) o;
         if (this == o) return true;
-        if (!naziv.equals(a.getNaziv())) return false;
-        if (!sifra.equals(a.getSifra())) return false;
-
-        if (Double.compare(cijena, a.getCijena()) != 0) return false;
-        return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artikal artikal = (Artikal) o;
+        return Objects.equals(sifra, artikal.sifra) &&
+                Objects.equals(naziv, artikal.naziv) &&
+                Objects.equals(cijena, artikal.cijena);
     }
+
+
     /*public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikal) {
         for(int i = 0; i<artikal.size(); i++) {
             for(int j = i+1; j<artikal.size(); j++) {
