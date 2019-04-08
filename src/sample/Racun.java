@@ -13,6 +13,8 @@ public class Racun {
         private int kolicina;
 
         public Stavka(Artikal artikal, int kolicina) {
+            String[] odvojeno = artikal.toString().split(",");
+            String id = odvojeno[0];
             this.artikal = artikal;
             this.kolicina = kolicina;
         }
@@ -59,8 +61,9 @@ public class Racun {
     public String toString() {
         String output = "";
         for(Stavka stavka : stavka) {
-            output += stavka.getArtikal().getSifra() + " " + stavka.getKolicina() + " " + stavka.getArtikal().getCijena()*stavka.getKolicina();
+            output += stavka.getArtikal().getSifra() + " " + stavka.getKolicina() + " " + stavka.getArtikal().getCijena()*stavka.getKolicina() + "\n";
         }
+        output += "UKUPNO: " + ukupanIznos();
         return output ;
     }
 }

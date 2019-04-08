@@ -1,6 +1,5 @@
 package sample;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Artikal {
@@ -9,7 +8,6 @@ public class Artikal {
     private Double cijena;
 
     public Artikal() {
-
     }
 
     public String getSifra() {
@@ -43,10 +41,18 @@ public class Artikal {
         cijena = Double.parseDouble(artikal[2]);
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return sifra+","+naziv+","+cijena;
+    }*/
+
+    @Override
+    public String toString() {
+        String sifra = this.sifra+","+naziv+","+cijena;
+        return sifra;
     }
+
+
 
     //Object o = new Object();
 

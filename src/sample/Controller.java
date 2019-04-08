@@ -9,6 +9,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -52,15 +53,17 @@ public class Controller {
         racun = new Racun();
         rez = new ArrayList<>(kanta);
         lista.addAll(rez);
+        //List<String> list = new ArrayList<>();
+        //String izlaz = "";
+        /*for(Artikal a : lista) {
+            izlaz += a.getSifra() + ", " + a.getNaziv() + ", " + a.getCijena();
+            list.add(a.getSifra());
+        }
+        izborArtikla.getItems().addAll((Artikal) list);*/
+
         izborArtikla.setItems(lista);
 
 
-
-       /* String izlaz = "";
-        for(Artikal a : filter) {
-            izlaz += a.getSifra() + ", " + a.getNaziv() + ", " + a.getCijena();
-            izborArtikla.getItems().add(a.getSifra());
-        }*/
 
 
     }
